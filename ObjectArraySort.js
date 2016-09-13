@@ -1,10 +1,10 @@
 var objArraySample = [
-    { 'name': 'Name1', 'age': 40 }, 
-    { 'name': 'Name2', 'age': 35 }, 
-    { 'name': 'Name3', 'age': 45 }, 
-    { 'name': 'Name4', 'age': 43 }, 
-    { 'name': 'Name5', 'age': 32 }, 
-    { 'name': 'Name6', 'age': 53 }
+    { 'name': 'Name2', 'age': 40 }, 
+    { 'name': 'Name1', 'age': 35 }, 
+    { 'name': 'name3', 'age': 45 }, 
+    { 'name': 'Name5', 'age': 43 }, 
+    { 'name': 'name3', 'age': 32 }, 
+    { 'name': 'name4', 'age': 53 }
 ];
 
 // Ascending Order
@@ -15,11 +15,11 @@ const DESC = -1;
 /**
  * Compare the values for a field in 2 objects to determine the sort order arrangement.
  */
-var compareValues = function(obj1, obj2, fieldName, sortOrder, secFieldName, secSortOrder) {
+var compareValues = function(obj1, obj2, fieldName, sortOrder, secFieldName = null, secSortOrder = ASC) {
     if (obj1[fieldName] === obj2[fieldName]) {
         return (secFieldName === null) ? 0 : compareValues(obj1, obj2, secFieldName, secSortOrder);
     }
-    return sortOrder * ((obj1[fieldName] > obj2[fieldName]) ? 1 : -1);
+    return sortOrder * ((String(obj1[fieldName]).toUpperCase() > String(obj2[fieldName]).toUpperCase()) ? 1 : -1);
 }
 
 /**
